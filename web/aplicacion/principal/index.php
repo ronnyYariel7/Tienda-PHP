@@ -5,8 +5,8 @@ include_once(dirname(__FILE__) . "/../../cabecera.php");
 require_once "../clases/curso2026/datosMuebles.php";
 $barra=[
     [
-        "TEXTO"=> "Tienda",
-        "ENLACE"=> "/aplicacion/principal/index.php"
+        "TEXTO"=> "Principal",
+        "ENLACE"=> "/index.php"
     ],
       [
         "TEXTO"=> "Prueba",
@@ -64,6 +64,7 @@ function cuerpo($datos,$mueble,$botonSelecionado)
         <td>Fabricante</td>
         <td>Pais</td>
         <td>Precio</td>
+        <td>Material</td>
    <?php foreach($datos as $index=>$valor){
              agregarFilaTabla($valor,$index);
         }
@@ -86,6 +87,7 @@ function agregarFilaTabla(MuebleBase $mueble,int $id){
     <td><?=$mueble->getFabricante()?></td>
     <td><?=$mueble->getPais()?></td>
     <td><?=$mueble->getPrecio()?>€</td>
+    <td><?= $mueble->getDescripcionMaterial() ?></td>
 </tr>
 <?php
 }

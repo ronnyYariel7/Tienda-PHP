@@ -5,6 +5,7 @@ require_once '../clases/curso2026/MuebleBase.php';
 require_once '../clases/curso2026/MuebleReciclado.php';
 require_once "../clases/curso2026/Caracteristicas.php";
 require_once "../clases/curso2026/MuebleTradicional.php";
+require_once "../clases/curso2026/Materiales.php";
 $barra=[
     [
         "TEXTO"=> "Tienda",
@@ -66,7 +67,7 @@ function cuerpo()
     $caracReciclado->agregarCaracteriticas(["Color" => "Amarillo"]);
 
     $muebleRec = new MuebleReciclado("Mesa de Centro", "Ikea", "España", 2022, 
-    "01/01/2022", "31/12/2035", 120.50,$caracReciclado, 80 );
+    "01/01/2022", "31/12/2035", 120.50,$caracReciclado,Materiales::Madera, 80 );
     echo $muebleRec . "\n\n";
     ?>
     <h3>Mueble Tradiconal</h3>
@@ -75,10 +76,11 @@ function cuerpo()
     $caracTradicional->agregarCaracteriticas(["estilo" => "Clasico", "acabado" => "Barnizado"]);
 
     $muebleTrad = new MuebleTradicional("Sillon Clasico", "MueblesAntiguos", "Italia", 2021, "15/05/2021", 
-                            "31/12/2038", 250.00,  $caracTradicional, 45.0,"SERIE-A99");
+                            "31/12/2038", 250.00,  $caracTradicional,Materiales::Hierro, 45.0,"SERIE-A99");
     // añadir Carcateristica
     $muebleTrad->anadirCaracteristica("Ancho",125,"Alto",70);
     echo $muebleTrad . "\n\n";
 
+ 
 
 }

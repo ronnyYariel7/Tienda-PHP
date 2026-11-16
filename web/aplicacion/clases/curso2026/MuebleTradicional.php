@@ -8,9 +8,9 @@ final class MuebleTradicional extends MuebleBase {
 
    
     public function __construct(string $nombre, string $fabricante, string $pais, int $anio, string $fechaIniVenta, string $fechaFinVenta, 
-    float $precio,Caracteristicas $caracteristicas,float $peso,string $serie)
+    float $precio,Caracteristicas $caracteristicas,Materiales $material, float $peso,string $serie)
     {
-         parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio,$caracteristicas);
+         parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio,$caracteristicas,$material);
          $this->setPeso($peso);
          $this->setSerie($serie);
 

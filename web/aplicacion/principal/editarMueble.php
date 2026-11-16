@@ -9,6 +9,7 @@ require_once '../clases/curso2026/MuebleBase.php';
 require_once '../clases/curso2026/MuebleReciclado.php';
 require_once "../clases/curso2026/Caracteristicas.php";
 require_once "../clases/curso2026/MuebleTradicional.php";
+require_once "../clases/curso2026/Materiales.php";
 
 $barra=[
     [
@@ -22,6 +23,8 @@ $barra=[
     
     
 ];
+
+
 
 $almacen=new datosMuebles();
 $arrayDatos=$almacen->datosMuebles();
@@ -74,6 +77,13 @@ if(isset($_POST["editarMueble"])){
         {
             $errores["precio"][]="Precio (no puede ser menor de 30)";
         }
+
+        ///Cambia el Material del Mueble
+        if(Materiales::Madera->devolverCaso(intval($_POST["materiales"]))!==false){
+            $mueble->setMaterial(Materiales::Madera->devolverCaso(intval($_POST["materiales"])));
+        }
+       
+        
     
         if($mueble instanceof MuebleReciclado){
             if(!($mueble->setPorcentajeReciclado($_POST["reciclado"])))
@@ -207,7 +217,13 @@ function formularioEditarMueble(MuebleBase $mueble,array $errores){
             echo $error;
             echo "</div>";
         }
-    } 
+    } ?>
+        <label for="">Material</label>
+            <select name="materiales" id="" >
+                <?php materiales(); ?><br>
+            </select>
+
+      <?php
         if($mueble instanceof MuebleReciclado)
             {?>
                 <label for="">Porcentaje Reciclado:</label>
@@ -260,4 +276,16 @@ function resumen(MuebleBase $mueble){
         <?php echo "{$mueble->__toString()}"; ?>
     </div>
     <?php
+}
+
+//Método que Imprime todos los Casos de la Clase Material
+function materiales(){
+    $array=Materiales::cases();
+    
+    foreach($array as $material){ 
+        ?>
+      <option value="<?=$material->devolverValor()?>"><?=$material->descripcion()?></option>
+
+        <?php
+    }
 }

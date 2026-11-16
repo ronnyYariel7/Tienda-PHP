@@ -18,10 +18,11 @@ abstract class MuebleBase {
     private string $_fechaFinVenta="31/12/2040";
     private float $_precio=30;
     private Caracteristicas $_caracteristicas;
+    private Materiales $_materiales=Materiales::Hierro; // HIERRO es el valor numerioco 10 
 
     //Constructor
     public function __construct(string $nombre,string $fabricante,string $pais,int $anio,
-        string $fechaIniVenta,string $fechaFinVenta,float $precio ,Caracteristicas $caracteristicas)
+        string $fechaIniVenta,string $fechaFinVenta,float $precio ,Caracteristicas $caracteristicas,Materiales $materiales)
     {
         try{
             if(!($this->setNombre($nombre))) throw new Error("El Campo Nombre es Obligatorio");
@@ -32,6 +33,7 @@ abstract class MuebleBase {
             $this->setFechaFinVenta($fechaFinVenta);
             $this->setPrecio($precio);
             $this->_caracteristicas=$caracteristicas;
+            $this->_materiales=$materiales;
             self::$_mueblesCreados++;
         }
         catch(Exception $e){
@@ -158,6 +160,11 @@ abstract class MuebleBase {
         return $estado;
     }
 
+    public function setMaterial(Materiales $material){
+        $this->_materiales=$material;
+
+    }
+
     /**
      * Será redefinido en las clases hijas y devolverá
      *un array con el nombre de las propiedades adicionales a la clase base. 
@@ -202,7 +209,7 @@ abstract class MuebleBase {
                  $this::class ." con nombre {$this->_nombre}, fabricante {$this->_fabricante}, fabricado en {$this->_pais} 
                  \na partir del año {$this->_anio}, vendido desde {$this->_fechaIniVenta} hasta\n 
                  {$this->_fechaFinVenta}, precio {$this->_precio}€.
-                  Carcateristicas:{$this->_caracteristicas->__toString()}";
+                  Carcateristicas:{$this->_caracteristicas->__toString()}, de Material {$this->getDescripcionMaterial()}";
     }
 
 
@@ -240,8 +247,13 @@ abstract class MuebleBase {
         public function getFechaFinVenta(): string { return $this->_fechaFinVenta;}
         public function getPrecio(): float {return $this->_precio;}
 
+        //Devuelve la Descripción del Materia
+        public function getDescripcionMaterial(){return $this->_materiales->descripcion();}
+
 
 
     }
+
+   
 
 ?>

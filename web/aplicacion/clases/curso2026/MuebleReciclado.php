@@ -8,10 +8,10 @@ final class MuebleReciclado extends MuebleBase {
 
     //constructor
    public function __construct(string $nombre, string $fabricante, string $pais, int $anio, string $fechaIniVenta, 
-        string $fechaFinVenta, float $precio,Caracteristicas $caracteristicas, int $PorcentajeReciclado)
+        string $fechaFinVenta, float $precio,Caracteristicas $caracteristicas,Materiales $material, int $PorcentajeReciclado)
     {
         try{
-                 parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio,$caracteristicas);
+                 parent::__construct($nombre, $fabricante, $pais, $anio, $fechaIniVenta, $fechaFinVenta, $precio,$caracteristicas,$material);
          if(!($this->setPorcentajeReciclado($PorcentajeReciclado)))
             throw new Error("debe estar entre 0 y 100");
         }

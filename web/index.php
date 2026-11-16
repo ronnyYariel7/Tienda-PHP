@@ -6,6 +6,10 @@ $barra=[
       [
         "TEXTO"=> "Tienda",
         "ENLACE"=> "/aplicacion/principal/index.php"
+    ],
+      [
+        "TEXTO"=> "Prueba",
+        "ENLACE"=> "/aplicacion/principal/pruebas.php"
     ]
  
     
@@ -32,10 +36,6 @@ function cabecera()
 function cuerpo()
 {
 ?>
-    <br><br>
-    
-    Hola, estás en Index.php wecwecw
-    <br>
-    <a href="/aplicacion/plantilla/index.php">ir a otro index</a>
+
 <?php
 }

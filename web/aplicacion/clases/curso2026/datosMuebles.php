@@ -3,6 +3,7 @@ require_once "Caracteristicas.php";
 require_once "MuebleBase.php";
 require_once "MuebleReciclado.php";
 require_once "MuebleTradicional.php";
+require_once "Materiales.php";
 
 class datosMuebles {
 
@@ -55,19 +56,19 @@ class datosMuebles {
 
         $this->_muebles = [
             1 => new MuebleReciclado("Silla ", "MaderasSur", "España", 2021, "10/02/2021", "31/12/2030", 
-                45.00, $carac1, 85 
+                45.00, $carac1,Materiales::Madera, 85 
             ),
             2 => new MuebleTradicional("Mesa Comedor", "CarpinteriaNorte", "España", 2020, "15/03/2020", "31/12/2035", 
-                                        180.00,  $carac2, 35.5, "S01" 
+                                        180.00,  $carac2,Materiales::Hierro, 35.5, "S01" 
             ),
             3 => new MuebleReciclado("Banco Jardin", "Eco", "Portugal", 
-                2022, "01/05/2022","31/12/2032", 95.50, $carac3, 100 
+                2022, "01/05/2022","31/12/2032", 95.50, $carac3,Materiales::Plastico, 100 
             ),
             4 => new MuebleTradicional("Armario Ropero", "MueblesCentro", "Italia", 2023, "20/01/2023", 
-                "31/12/2040", 320.00, $carac4, 85.0, "S04" // Serie
+                "31/12/2040", 320.00, $carac4,Materiales::Marmol, 85.0, "S04" // Serie
             ),
             5 => new MuebleReciclado("Mesa Centro", "ReWood", "España", 2024, "12/04/2024", "31/12/2038", 
-                75.00, $carac5, 70 
+                75.00, $carac5,Materiales::Hierro, 70 
             )
         ];
 

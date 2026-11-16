@@ -4,7 +4,10 @@ class Caracteristicas {
 
 private bool $_bloquear=false;// Bloquear Caracteristicas
 
+
     public function agregarCaracteriticas(array $caracteristicas){
+
+
         foreach($caracteristicas as $nombrePropiedades =>$valor){
 
                if($nombrePropiedades=="ULTIMA" && property_exists($this,$nombrePropiedades)){
@@ -33,6 +36,16 @@ private bool $_bloquear=false;// Bloquear Caracteristicas
     public function devolverCarcateristicas():array {
         $todasCaracteristicas=[];
 
+
+        //Para que sea Distinto cada ves que se devuelve el Valor
+                $codigo="";
+                $numeroSerie="";
+                for($i=0;$i<15;$i++){
+                $codigo.=rand(0,9)."";
+                }
+
+                $this->$numeroSerie=$codigo;
+
         foreach($this as $clave=>$valor){
             $todasCaracteristicas[$clave]=$valor;
         }
@@ -50,7 +63,8 @@ private bool $_bloquear=false;// Bloquear Caracteristicas
     {
         $cadena="";
         $cont=1;
-       foreach($this as $propiedad=>$valor){
+        $caracteristicas=$this->devolverCarcateristicas();
+       foreach($caracteristicas as $propiedad=>$valor){
         if($propiedad!="_bloquear"){
         $cadena.="|Car".$cont.": ".$valor;
         $cont++;}                     
